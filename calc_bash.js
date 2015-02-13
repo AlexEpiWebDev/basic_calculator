@@ -30,96 +30,35 @@ $(document).ready(function() {
 		function divide(a, b) {
 			return a / b;
 		};
+		function generateHandler(passNumberToPush) {
+			return function() {
+				pushNumber(passNumberToPush);
+			};
+		};
+		function pushNumber(numberToPush) {
+			if(operator === undefined) {
+				firstArray.push(numberToPush);
+			}
+			else {
+				secondArray.push(numberToPush);
+			}
+		};
 		
-		$("#one").on("click", function() {
-			if(operator === undefined) {
-				firstArray.push("1");
-			}
-			else {
-				secondArray.push("1");
-			}
-		});
-		$("#two").on("click", function() {
-			if(operator === undefined) {
-				firstArray.push("2");
-			}
-			else {
-				secondArray.push("2");
-			}
-		});
-		$("#three").on("click", function() {
-			if(operator === undefined) {
-				firstArray.push("3");
-			}
-			else {
-				secondArray.push("3");
-			}
-		});
-		$("#four").on("click", function() {
-			console.log("4");
-			if(operator === undefined) {
-				firstArray.push("4");
-			}
-			else {
-				secondArray.push("4");
-			}
-		});
-		$("#five").on("click", function() {
-			console.log("5");
-			if(operator === undefined) {
-				firstArray.push("5");
-			}
-			else {
-				secondArray.push("5");
-			}
-		});
-		$("#six").on("click", function() {
-			console.log("6");
-			if(operator === undefined) {
-				firstArray.push("6");
-			}
-			else {
-				secondArray.push("6");
-			}
-		});
-		$("#seven").on("click", function() {
-			console.log("7");
-			if(operator === undefined) {
-				firstArray.push("7");
-			}
-			else {
-				secondArray.push("7");
-			}
-		});
-		$("#eight").on("click", function() {
-			console.log("8");
-			if(operator === undefined) {
-				firstArray.push("8");
-			}
-			else {
-				secondArray.push("8");
-			}
-		});
-		$("#nine").on("click", function() {
-			console.log("9");
-			if(operator === undefined) {
-				firstArray.push("9");
-			}
-			else {
-				secondArray.push("9");
-			}
-		});
-		$("#zero").on("click", function() {
-			console.log("0");
-			if(operator === undefined) {
-				firstArray.push("0");
-			}
-			else {
-				secondArray.push("0");
-			}
-		});
+		$("#one").on("click", generateHandler("1"));
+		$("#two").on("click", generateHandler("2"));
+		$("#three").on("click", generateHandler("3"));
+		$("#four").on("click", generateHandler("4"));
+		$("#five").on("click", generateHandler("5"));
+		$("#six").on("click", generateHandler("6"));
+		$("#seven").on("click", generateHandler("7"));
+		$("#eight").on("click", generateHandler("8"));
+		$("#nine").on("click", generateHandler("9"));
+		$("#zero").on("click", generateHandler("0"));
 		$("#clear").on("click", function() {
 			$("#output").text("0");
+			operator = undefined;
+			firstArray = [];
+			secondArray = [];
 		});
 		$("#add").on("click", function() {
 			operator = "addition";
